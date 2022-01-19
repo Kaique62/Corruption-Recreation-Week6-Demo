@@ -34,6 +34,11 @@ class MainMenuState extends MusicBeatState
 	var credits:FlxSprite;
 	var options:FlxSprite;
 
+	var storymenuSelected:FlxSprite;
+	var freeplaySelected:FlxSprite;
+	var creditsSelected:FlxSprite;
+	var optionsSelected:FlxSprite;	
+
 	var notSelected1:FlxSprite;
 	var notSelected2:FlxSprite;
 	var notSelected3:FlxSprite;
@@ -122,6 +127,20 @@ class MainMenuState extends MusicBeatState
 		options = new FlxSprite(750, 515).loadGraphic(Paths.image('mainmenu3'));
 		menuItems.add(options);
 
+		storymenuSelected = new FlxSprite(750, 150).loadGraphic(Paths.image('mainselected0'));
+		add(storymenuSelected);
+
+		freeplaySelected = new FlxSprite(750, 270).loadGraphic(Paths.image('mainselected1'));
+		freeplaySelected.visible = false;
+		add(freeplaySelected);
+
+		creditsSelected = new FlxSprite(750, 390).loadGraphic(Paths.image('mainselected2'));
+		creditsSelected.visible = false;
+		add(creditsSelected);
+
+		optionsSelected = new FlxSprite(750, 515).loadGraphic(Paths.image('mainselected3'));
+		optionsSelected.visible = false;
+		add(optionsSelected);		
 	//	FlxG.camera.follow(camFollow, null, 0.06);
 
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "Version: Senpai DEMO", 12);
@@ -214,6 +233,37 @@ class MainMenuState extends MusicBeatState
 			curSelected = 0;
 		if (curSelected < 0)
 			curSelected = menuItems.length - 1;
+
+		switch (curSelected){
+			case 0:
+				notSelected1.visible = false;
+				notSelected2.visible = true;
+				notSelected3.visible = true;
+				notSelected3.visible = true;
+				selected.y = 130;
+				storymenuSelected.visible = true;
+			case 1:
+				notSelected1.visible = true;
+				notSelected2.visible = false;
+				notSelected3.visible = true;
+				notSelected4.visible = true;
+				selected.y = 250;
+				freeplaySelected.visible = true;
+			case 2:
+				notSelected1.visible = true;
+				notSelected2.visible = true;
+				notSelected3.visible = false;
+				notSelected4.visible = true;
+				selected.y = 370;
+				credits.visible = true;
+			case 3:
+				notSelected1.visible = true;
+				notSelected2.visible = true;
+				notSelected3.visible = true;
+				notSelected4.visible = false;
+				selected.y = 490;		
+				options.visible = true;		
+		}
 
 	}
 }
