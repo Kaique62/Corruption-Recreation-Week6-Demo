@@ -30,7 +30,27 @@ class OptionsMenu extends MusicBeatState
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
 		menuBG.antialiasing = true;
-		add(menuBG);
+		// add(menuBG);
+
+		var Back:FlxSprite = new FlxSprite().loadGraphic(Paths.image('optionsBack'));
+		Back.setGraphicSize(Std.int(menuBG.width * 1.1));
+		Back.updateHitbox();
+		Back.screenCenter();
+		Back.antialiasing = true;
+		add(Back);
+
+		var Glitch:FlxSprite = new FlxSprite().loadGraphic(Paths.image('optionsGlitch'));
+		Glitch.setGraphicSize(Std.int(menuBG.width * 1.1));
+		Glitch.updateHitbox();
+		Glitch.screenCenter();
+		Glitch.antialiasing = true;
+		add(Glitch);
+
+		var Front:FlxSprite = new FlxSprite().loadGraphic(Paths.image('optionsFront'));
+		Front.updateHitbox();
+		Front.screenCenter();
+		Front.antialiasing = true;
+		add(Front);
 
 		/* 
 			grpControls = new FlxTypedGroup<Alphabet>();

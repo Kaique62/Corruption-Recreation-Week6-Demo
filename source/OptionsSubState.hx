@@ -8,7 +8,7 @@ import flixel.util.FlxColor;
 
 class OptionsSubState extends MusicBeatSubstate
 {
-	var textMenuItems:Array<String> = ['Master Volume', 'Sound Volume', 'Controls'];
+	var textMenuItems:Array<String> = ['Controls'];
 
 	var selector:FlxSprite;
 	var curSelected:Int = 0;
@@ -23,12 +23,13 @@ class OptionsSubState extends MusicBeatSubstate
 		add(grpOptionsTexts);
 
 		selector = new FlxSprite().makeGraphic(5, 5, FlxColor.RED);
-		add(selector);
+		// add(selector);
 
 		for (i in 0...textMenuItems.length)
 		{
-			var optionText:FlxText = new FlxText(20, 20 + (i * 50), 0, textMenuItems[i], 32);
+			var optionText:FlxText = new FlxText(60, 20 + (i * 50), 0, textMenuItems[i], 32);
 			optionText.ID = i;
+			optionText.screenCenter(Y);
 			grpOptionsTexts.add(optionText);
 		}
 	}
@@ -51,10 +52,10 @@ class OptionsSubState extends MusicBeatSubstate
 
 		grpOptionsTexts.forEach(function(txt:FlxText)
 		{
-			txt.color = FlxColor.WHITE;
+			txt.color = FlxColor.GREEN;
 
 			if (txt.ID == curSelected)
-				txt.color = FlxColor.YELLOW;
+				txt.color = FlxColor.GREEN;
 		});
 
 		if (controls.ACCEPT)

@@ -45,7 +45,7 @@ class MainMenuState extends MusicBeatState
 	var notSelected4:FlxSprite;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'credits', 'options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -116,6 +116,7 @@ class MainMenuState extends MusicBeatState
 		add(notSelected4);			
 
 		storymenu = new FlxSprite(750, 150).loadGraphic(Paths.image('mainmenu0'));
+		storymenu.visible = false;
 		menuItems.add(storymenu);
 
 		freeplay = new FlxSprite(750, 270).loadGraphic(Paths.image('mainmenu1'));
@@ -141,14 +142,12 @@ class MainMenuState extends MusicBeatState
 		optionsSelected = new FlxSprite(750, 515).loadGraphic(Paths.image('mainselected3'));
 		optionsSelected.visible = false;
 		add(optionsSelected);		
-	//	FlxG.camera.follow(camFollow, null, 0.06);
 
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "Version: Senpai DEMO", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
 
@@ -210,10 +209,10 @@ class MainMenuState extends MusicBeatState
 											FlxG.switchState(new FreeplayState());
 	
 											trace("Freeplay Menu Selected");
-	
+										
+										case 'credits':
+											FlxG.switchState(new CreditsState());
 										case 'options':
-											FlxTransitionableState.skipNextTransIn = true;
-											FlxTransitionableState.skipNextTransOut = true;
 											FlxG.switchState(new OptionsMenu());
 									}
 							
@@ -240,29 +239,69 @@ class MainMenuState extends MusicBeatState
 				notSelected2.visible = true;
 				notSelected3.visible = true;
 				notSelected3.visible = true;
+
 				selected.y = 130;
+
 				storymenuSelected.visible = true;
+				freeplaySelected.visible = false;
+				creditsSelected.visible = false;
+				optionsSelected.visible = false;	
+				
+				storymenu.visible = false;
+				freeplay.visible = true;
+				credits.visible = true;
+				options.visible = true;
 			case 1:
 				notSelected1.visible = true;
 				notSelected2.visible = false;
 				notSelected3.visible = true;
 				notSelected4.visible = true;
+
 				selected.y = 250;
+
+				storymenuSelected.visible = false;
 				freeplaySelected.visible = true;
+				creditsSelected.visible = false;
+				optionsSelected.visible = false;	
+				
+				storymenu.visible = true;
+				freeplay.visible = false;
+				credits.visible = true;
+				options.visible = true;
 			case 2:
 				notSelected1.visible = true;
 				notSelected2.visible = true;
 				notSelected3.visible = false;
 				notSelected4.visible = true;
+
 				selected.y = 370;
-				credits.visible = true;
+
+				storymenuSelected.visible = false;
+				freeplaySelected.visible = false;
+				creditsSelected.visible = true;
+				optionsSelected.visible = false;	
+
+				storymenu.visible = true;
+				freeplay.visible = true;
+				credits.visible = false;
+				options.visible = true;
 			case 3:
 				notSelected1.visible = true;
 				notSelected2.visible = true;
 				notSelected3.visible = true;
 				notSelected4.visible = false;
+
 				selected.y = 490;		
-				options.visible = true;		
+
+				storymenuSelected.visible = false;
+				freeplaySelected.visible = false;
+				creditsSelected.visible = false;
+				optionsSelected.visible = true;	
+				
+				storymenu.visible = true;
+				freeplay.visible = true;
+				credits.visible = true;
+				options.visible = false;				
 		}
 
 	}
