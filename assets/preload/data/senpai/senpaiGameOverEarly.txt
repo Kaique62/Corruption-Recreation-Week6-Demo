@@ -1,0 +1,2 @@
+:bf:Request Failed("Unable to successfully transfer bf_soul.");
+:bf:Console.Write("Game Over");

@@ -1,0 +1,3 @@
+:bf:Delete(BOYFRIEND.XML);
+:bf:Request Accepted("Successfully deleted BOYFRIEND.XML")
+:bf:Console.Write("Game Over");
